@@ -1,18 +1,23 @@
 #include <iostream>
 
-#include "Display.h"
+#include "ProcessingManager.h"
 
 using namespace std;
 
 int main(int argv, char** argc)
 {
-	Display display(300, 300, "Title");
+	ProcessingManager *processing = new ProcessingManager();
 
-	while (!display.IsClosed())
+	processing->setup();
+	if (processing->getP() == nullptr)
 	{
-		display.background(51);
+		processing->size(150, 150);
+	}
 
-		display.Update();
+	while (!processing->getP()->IsClosed())
+	{
+		processing->draw();
+		processing->getP()->Update();
 	}
 
 	return 0;

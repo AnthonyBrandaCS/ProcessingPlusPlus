@@ -6,7 +6,7 @@
 
 class Display
 {
-private:
+protected:
 	SDL_Window* window;
 	SDL_GLContext glContext;
 	bool isClosed;
@@ -23,10 +23,5 @@ public:
 	bool IsClosed();
 
 	~Display();
-
-
-	void background(float b);
-	void background(float r, float g, float b);
-	void background(float r, float g, float b, float a);
 };
 

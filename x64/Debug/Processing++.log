@@ -1,4 +1,5 @@
-﻿  main.cpp
-  Display.cpp
-  Generating Code...
+﻿  ProcessingManager.cpp
+c:\users\adbra\desktop\c++\processing++\processing++\processingmanager.cpp(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\adbra\desktop\c++\processing++\processing++\processingmanager.cpp(24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\adbra\desktop\c++\processing++\processing++\processingmanager.cpp(25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Processing++.vcxproj -> C:\Users\adbra\Desktop\C++\Processing++\x64\Debug\Processing++.exe

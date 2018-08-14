@@ -52,20 +52,3 @@ Display::~Display()
 
 	SDL_Quit();
 }
-
-
-
-void Display::background(float b) {
-	glClearColor(b / 255.0f, b / 255.0f, b / 255.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-}
-
-void Display::background(float r, float g, float b) {
-	glClearColor(r / 255.0f, g / 255.0f, b / 255.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-}
-
-void Display::background(float r, float g, float b, float a) {
-	glClearColor(r / 255.0f, g / 255.0f, b / 255.0f, a);
-	glClear(GL_COLOR_BUFFER_BIT);
-}
