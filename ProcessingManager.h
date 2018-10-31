@@ -18,15 +18,13 @@ public:
 
 	Processing *getP() { return p; }
 
-#pragma region size
 	void size(int _width, int _height)
 	{
 		if(getP() == nullptr)
 			p = new Processing(_width, _height, "");
+		background(211);
 	}
-#pragma endregion
 
-#pragma region background
 	void background(int b)
 	{
 		checkP();
@@ -50,9 +48,7 @@ public:
 		checkP();
 		p->background(r, g, b, a);
 	}
-#pragma endregion
 
-#pragma region stroke 
 	void stroke(int b)
 	{
 		checkP();
@@ -76,15 +72,36 @@ public:
 		checkP();
 		p->stroke(r, g, b, a);
 	}
-#pragma endregion
 
-#pragma region line
+	void strokeWeight(int w)
+	{
+		checkP();
+		p->strokeWeight(w);
+	}
+
 	void line(float x1, float y1, float x2, float y2)
 	{
 		checkP();
 		p->line(x1, y1, x2, y2);
 	}
-#pragma endregion
+
+	float map(float v, float a, float b, float c, float d)
+	{
+		checkP();
+		p->map(v, a, b, c, d);
+	}
+
+	float random(float a)
+	{
+		checkP();
+		p->random(a);
+	}
+
+	float random(float a, float b)
+	{
+		checkP();
+		p->random(a, b);
+	}
 
 	void setup();
 	void draw();

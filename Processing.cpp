@@ -1,19 +1,19 @@
 #include "Processing.h"
 
 #include <iostream>
+#include <random>
 
 #include <GL/glew.h>
 
 using namespace std;
 
-#pragma region constructor
 Processing::Processing(int _width, int _height, const std::string& _title)
 	:Display(_width, _height, _title)
 {
+	width = _width;
+	height = _height;
 }
-#pragma endregion
 
-#pragma region background
 void Processing::background(int b) {
 	glClearColor((float)b / 255.0f, (float)b / 255.0f, (float)b / 255.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -33,9 +33,7 @@ void Processing::background(int r, int g, int b, int a) {
 	glClearColor((float)r / 255, (float)g / 255, (float)b / 255, (float)a / 255);
 	glClear(GL_COLOR_BUFFER_BIT);
 }
-#pragma endregion
 
-#pragma region stroke
 void Processing::stroke(int b) {
 	strokeR = b;
 	strokeG = b;
@@ -63,9 +61,12 @@ void Processing::stroke(int r, int g, int b, int a) {
 	strokeB = b;
 	strokeA = a;
 }
-#pragma endregion
 
-#pragma region line
+void Processing::strokeWeight(int w)
+{
+	strokeW = w;
+}
+
 void Processing::line(float x1, float y1, float x2, float y2)
 {
 	x1 = ((x1 + translateX) / (width / 2)) - 1;
@@ -74,11 +75,33 @@ void Processing::line(float x1, float y1, float x2, float y2)
 	x2 = ((x2 + translateX) / (width / 2)) - 1;
 	y2 = 1 - ((y2 + translateY) / (height / 2));
 
-	glLineWidth(1);
+	GLfloat lineWidthRange[2];
+	glGetFloatv(GL_ALIASED_LINE_WIDTH_RANGE, lineWidthRange);
+	
+
+	//cout << "Line Width Range : (" << lineWidthRange[0] << ", " << lineWidthRange[1] << ")\n";
+
+	//cout << "Max Width : " << glGetFloatV(GL_ALIASED_LINE_WIDTH_RANGE) << endl;
+	//glEnable(GL_SMOOTH_LINE_WIDTH_RANGE);
+	glLineWidth((float)strokeW);
 	glColor4f((float)strokeR / 255, (float)strokeG / 255, (float)strokeB / 255, (float)strokeA / 255);
 	glBegin(GL_LINES);
 	glVertex2d(x1, y1);
 	glVertex2d(x2, y2);
 	glEnd();
 }
-#pragma endregion
+
+float Processing::map(float v, float a, float b, float c, float d)
+{
+	return (v - a) / (b - a) * (d - c) + c;
+}
+
+float Processing::random(float a)
+{
+	return random(0, a);
+}
+
+float Processing::random(float a, float b)
+{
+	return a + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(b-a)));
+}
