@@ -1,11 +1,2 @@
 make:
-	g++ *.cpp -lSDL2 -lGL -lGLEW
-
-make_run:
-	g++ *.cpp -lSDL2 -lGL -lGLEW && ./a.out
-
-run:
-	./a.out
-
-rm:
-	rm ./a.out
+	g++ src/main.cpp src/Display.cpp src/Processing.cpp src/ProcessingManager.cpp src/sketch/Sketch.cpp src/sketch/Drop.cpp -L -lopengl31 -lglfw -lGL
