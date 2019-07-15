@@ -45,4 +45,6 @@ public:
 	void setup(void (*f)(Processing*));
 	void draw(void (*f)(Processing*));
 	void end(void (*f)(Processing*));
+	void keyPressed(void(*f)(Processing*, int), int key);
+	void keyReleased(void(*f)(Processing*, int), int key);
 };

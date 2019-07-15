@@ -8,26 +8,54 @@
 
 Processing* processing;
 
+void empty(Processing* a){}
+void empty_key(Processing* a, int b){}
+
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-  if(key == GLFW_KEY_ESCAPE)
-    processing->exit();
+    if(action == GLFW_PRESS)
+    {
+        if(keyPressed)
+            processing->keyPressed(keyPressed, key);
+        else
+            processing->keyPressed(empty_key, key);
+    }
+    if(action == GLFW_RELEASE)
+    {
+        if(keyReleased)
+            processing->keyReleased(keyReleased, key);
+        else
+            processing->keyReleased(empty_key, key);
+    }
 }
 
 int main(int argv, char** argc)
 {
     processing = new Processing();
-    
-    processing->setup(setup);
+
+    if(setup)
+        processing->setup(setup);
+    else
+        processing->setup(empty);
+
+    if(!processing->instance())
+        exit(-1);
 
     processing->instance()->keyboard(key_callback);
 
     while(!processing->instance()->IsClosed())
     {
-        processing->draw(draw);
+        if(draw)
+            processing->draw(draw);
+        else
+            processing->draw(empty);
+        
     }
     
-    processing->end(end);
+    if(end)
+        processing->end(end);
+    else
+        processing->end(empty);
 }
 
 

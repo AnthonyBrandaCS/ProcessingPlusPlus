@@ -101,3 +101,18 @@ void Processing::end(void (*f)(Processing*))
 
     delete this;
 }
+
+void Processing::keyPressed(void(*f)(Processing*, int), int key)
+{
+    if(key == GLFW_KEY_ESCAPE)
+    {
+        exit();
+    }
+
+    (*f)(this, key);
+}
+
+void Processing::keyReleased(void(*f)(Processing*, int), int key)
+{
+    (*f)(this, key);
+}
