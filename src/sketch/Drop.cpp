@@ -9,7 +9,7 @@ void Drop::init(Processing* _p)
 {
     p = _p;
 
-    x  = p->random(800); // random x position ie width because anywhere along the width of screen
+    x  = p->random(p->width); // random x position ie width because anywhere along the width of screen
     y  = p->random(-500, -50); // random y position, negative values because drop first begins off screen to give a realistic effect
     z  = p->random(0, 20); // z value is to give a perspective view , farther and nearer drops effect
     len = p->map(z, 0, 20, 10, 20); // if z is near then  drop is longer

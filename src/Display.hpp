@@ -25,6 +25,8 @@ public:
 	void keyboard(GLFWkeyfun cbfun);
 
 	GLFWwindow* getWindow();
+	int getWidth();
+	int getHeight();
 
 	~Display();
 };

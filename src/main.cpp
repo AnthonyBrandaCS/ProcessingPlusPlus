@@ -8,8 +8,8 @@
 
 Processing* processing;
 
-void empty(Processing* a){}
-void empty_key(Processing* a, int b){}
+void empty(Processing* p){}
+void empty_key(Processing* p){}
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {

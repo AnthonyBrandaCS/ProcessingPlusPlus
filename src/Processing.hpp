@@ -1,6 +1,9 @@
 #pragma once
 #include "ProcessingManager.hpp"
 
+#define width instance()->getWidth()
+#define height instance()->getHeight()
+
 class Processing
 {
 private:
@@ -15,6 +18,8 @@ private:
 	}
 
 public:
+	int key;
+
 // Manager Functions
 	Processing();
 	ProcessingManager* instance();
@@ -45,6 +50,6 @@ public:
 	void setup(void (*f)(Processing*));
 	void draw(void (*f)(Processing*));
 	void end(void (*f)(Processing*));
-	void keyPressed(void(*f)(Processing*, int), int key);
-	void keyReleased(void(*f)(Processing*, int), int key);
+	void keyPressed(void(*f)(Processing*), int key);
+	void keyReleased(void(*f)(Processing*), int key);
 };
