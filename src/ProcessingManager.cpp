@@ -45,8 +45,10 @@ void ProcessingManager::strokeWeight(int w)
 
 void ProcessingManager::point(float x, float y)
 {
-	x = ((x + translateX) / (width / 2)) - 1;
-	y = 1 - ((y + translateY) / (height / 2));
+	x = map(x + translateX, 0, width, -1, 1);
+	y = map(y + translateY, 0, height, 1, -1);
+	// x = ((x + translateX) / (width / 2)) - 1;
+	// y = 1 - ((y + translateY) / (height / 2));
 
 	glPointSize((float)strokeW);
 	glColor4f((float)strokeR / 255, (float)strokeG / 255, (float)strokeB / 255, (float)strokeA / 255);
@@ -57,11 +59,15 @@ void ProcessingManager::point(float x, float y)
 
 void ProcessingManager::line(float x1, float y1, float x2, float y2)
 {
-	x1 = ((x1 + translateX) / (width / 2)) - 1;
-	y1 = 1 - ((y1 + translateY) / (height / 2));
+	x1 = map(x1 + translateX, 0, width, -1, 1);
+	y1 = map(y1 + translateY, 0, height, 1, -1);
+	//x1 = ((x1 + translateX) / (width / 2)) - 1;
+	//y1 = 1 - ((y1 + translateY) / (height / 2));
 
-	x2 = ((x2 + translateX) / (width / 2)) - 1;
-	y2 = 1 - ((y2 + translateY) / (height / 2));
+	x2 = map(x2 + translateX, 0, width, -1, 1);
+	y2 = map(y2 + translateY, 0, height, 1, -1);
+	//x2 = ((x2 + translateX) / (width / 2)) - 1;
+	//y2 = 1 - ((y2 + translateY) / (height / 2));
 
 	GLfloat lineWidthRange[2];
 	glGetFloatv(GL_ALIASED_LINE_WIDTH_RANGE, lineWidthRange);
@@ -77,6 +83,16 @@ void ProcessingManager::line(float x1, float y1, float x2, float y2)
 float ProcessingManager::map(float v, float a, float b, float c, float d)
 {
 	return (v - a) / (b - a) * (d - c) + c;
+}
+
+float ProcessingManager::min(float a, float b)
+{
+	return a < b ? a : b;
+}
+
+float ProcessingManager::max(float a, float b)
+{
+	return a > b ? a : b;
 }
 
 float ProcessingManager::random(float a)

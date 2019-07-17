@@ -36,6 +36,10 @@ public:
 
 	float map(float v, float a, float b, float c, float d);
 
+	float min(float a, float b);
+	
+	float max(float a, float b);
+
 	float random(float a);
 	float random(float a, float b);
 };
