@@ -21,6 +21,9 @@ Display::Display(int _width, int _height, const char* _title)
 		exit(-2);
 	}
 
+	width = _width;
+	height = _height;
+
 	glfwMakeContextCurrent(window);
 
 	closed = false;
@@ -49,6 +52,16 @@ void Display::keyboard(GLFWkeyfun cbfun)
 GLFWwindow* Display::getWindow()
 {
 	return window;
+}
+
+int Display::getWidth()
+{
+	return width;
+}
+
+int Display::getHeight()
+{
+	return height;
 }
 
 Display::~Display()

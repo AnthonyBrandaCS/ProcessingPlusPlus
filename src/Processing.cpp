@@ -19,7 +19,7 @@ void Processing::size(int _width, int _height)
 {
     if(p == nullptr)
     {
-        p = new ProcessingManager(_width, _height, "");
+        p = new ProcessingManager(_width, _height, "Rain");
     }
 }
 
@@ -100,4 +100,22 @@ void Processing::end(void (*f)(Processing*))
     (*f)(this);
 
     delete this;
+}
+
+void Processing::keyPressed(void(*f)(Processing*), int _key)
+{
+    key = _key;
+    if(key == GLFW_KEY_ESCAPE)
+    {
+        exit();
+    }
+    
+    (*f)(this);
+}
+
+void Processing::keyReleased(void(*f)(Processing*), int _key)
+{
+    key = _key;
+    
+    (*f)(this);
 }
