@@ -19,7 +19,7 @@ void Processing::size(int _width, int _height)
 {
     if(p == nullptr)
     {
-        p = new ProcessingManager(_width, _height, "Rain");
+        p = new ProcessingManager(_width, _height, "Clock");
     }
 }
 
@@ -58,9 +58,55 @@ void Processing::line(float x1, float y1, float x2, float y2)
     p->line(x1, y1, x2, y2);
 }
 
+int Processing::second()
+{
+    return p->sec();
+}
+
+int Processing::minute()
+{
+    return p->min();
+}
+
+int Processing::hour()
+{
+    return p->hour();
+}
+
+int Processing::day()
+{
+    return p->day();
+}
+
+int Processing::month()
+{
+    return p->month();
+}
+
+int Processing::year()
+{
+    return p->year();
+}
+
+
 float Processing::map(float v, float a, float b, float c, float d)
 {
     return p->map(v, a, b, c, d);
+}
+
+float Processing::norm(float v, float a, float b)
+{
+    return p->map(v, a, b, 0, 1);
+}
+
+float Processing::min(float a, float b)
+{
+    return p->min(a, b);
+}
+
+float Processing::max(float a, float b)
+{
+    return p->max(a, b);
 }
 
 float Processing::random(float a)
@@ -73,9 +119,44 @@ float Processing::random(float a, float b)
     return p->random(a, b);
 }
 
+float Processing::radians(float a)
+{
+    return p->radians(a);
+}
+
+float Processing::sin(float a)
+{
+	return p->_sin(a);
+}
+
+float Processing::cos(float a)
+{
+	return p->_cos(a);
+}
+
+float Processing::tan(float a)
+{
+	return p->_tan(a);
+}
+	
+float Processing::asin(float a)
+{
+	return p->_asin(a);
+}
+
+float Processing::acos(float a)
+{
+	return p->_acos(a);
+}
+
+float Processing::atan(float a)
+{
+	return p->_atan(a);
+}
+
 void Processing::exit()
 {
-    p->close();
+    return p->close();
 }
 
 void Processing::setup(void (*f)(Processing*))

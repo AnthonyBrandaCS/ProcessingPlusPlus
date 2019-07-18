@@ -39,10 +39,33 @@ public:
 
 	void line(float x1, float y1, float x2, float y2);
 
+	int second();
+	int minute();
+	int hour();
+	int day();
+	int month();
+	int year();
+
 	float map(float v, float a, float b, float c, float d);
+
+	float norm(float v, float a, float b);
+
+	float min(float a, float b);
+
+	float max(float a, float b);
 	
 	float random(float a);
 	float random(float a, float b);
+
+	float radians(float a);
+
+	float sin(float a);
+	float cos(float a);
+	float tan(float a);
+	
+	float asin(float a);
+	float acos(float a);
+	float atan(float a);
 
 	void exit();
 

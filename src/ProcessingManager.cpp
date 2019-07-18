@@ -1,7 +1,9 @@
 #include "ProcessingManager.hpp"
 
 #include <iostream>
+#include <time.h>
 #include <random>
+#include <math.h>
 
 #include <GL/glew.h>
 
@@ -74,9 +76,71 @@ void ProcessingManager::line(float x1, float y1, float x2, float y2)
 	glEnd();
 }
 
+struct tm* getTime()
+{
+	time_t rawtime;
+	struct tm * timeinfo;
+	time ( &rawtime );
+	timeinfo = localtime ( &rawtime );
+	return timeinfo;
+}
+
+int ProcessingManager::sec()
+{
+	struct tm* t = getTime();
+	int sec = t->tm_sec;
+	//delete t;
+	return sec;
+}
+int ProcessingManager::min()
+{
+	struct tm* t = getTime();
+	int min = t->tm_min;
+	//delete t;
+	return min;
+}
+int ProcessingManager::hour()
+{
+	struct tm* t = getTime();
+	int hour = t->tm_hour;
+	//delete t;
+	return hour;
+}
+int ProcessingManager::day()
+{
+	struct tm* t = getTime();
+	int day = t->tm_mday;
+	//delete t;
+	return day;
+}
+int ProcessingManager::month()
+{
+	struct tm* t = getTime();
+	int month = t->tm_mon;
+	//delete t;
+	return month;
+}
+int ProcessingManager::year()
+{
+	struct tm* t = getTime();
+	int year = t->tm_year;
+	//delete t;
+	return year;
+}
+
 float ProcessingManager::map(float v, float a, float b, float c, float d)
 {
 	return (v - a) / (b - a) * (d - c) + c;
+}
+
+float ProcessingManager::min(float a, float b)
+{
+	return a < b ? a : b;
+}
+
+float ProcessingManager::max(float a, float b)
+{
+	return a > b ? a : b;
 }
 
 float ProcessingManager::random(float a)
@@ -87,4 +151,39 @@ float ProcessingManager::random(float a)
 float ProcessingManager::random(float a, float b)
 {
 	return a + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(b-a)));
+}
+
+float ProcessingManager::radians(float a)
+{
+	return a * 3.141592f / 180.f;
+}
+
+float ProcessingManager::_sin(float a)
+{
+	return std::sin(a);
+}
+
+float ProcessingManager::_cos(float a)
+{
+	return std::cos(a);
+}
+
+float ProcessingManager::_tan(float a)
+{
+	return std::tan(a);
+}
+	
+float ProcessingManager::_asin(float a)
+{
+	return std::asin(a);
+}
+
+float ProcessingManager::_acos(float a)
+{
+	return std::acos(a);
+}
+
+float ProcessingManager::_atan(float a)
+{
+	return std::atan(a);
 }
